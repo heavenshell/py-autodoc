@@ -8,18 +8,23 @@ $target_url
 
 Request
 -------
+::
 
-$describe
+  $describe
 
 Parameters
 ----------
 
-$params
+::
+
+  $params
 
 Response
 --------
 
-Status:       $status_code
-Content-Type: $response_content_type
-Response:
-$response_body
+::
+
+  Status:       $status_code
+  Content-Type: $response_content_type
+  Response:
+  $response_body
