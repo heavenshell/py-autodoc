@@ -66,9 +66,15 @@ class Autodoc(object):
         self.separators = '='
 
     def clear(self):
+        """ Clear all stored response. """
         self.vars = []
 
     def parse(self, describe, response):
+        """Parse WebTest response.
+
+        :param describe: Description of document
+        :param response: WebTest response
+        """
         if response.__module__ == 'webtest.response':
             klass = WebTestResponse()
         else:
@@ -107,6 +113,13 @@ class Autodoc(object):
         return False
 
     def describe(self, *args, **kwargs):
+        """Parse WebTest response.
+
+        @autodoc.describe('/ GET')
+
+        :param *args:
+        :param **kwargs:
+        """
         def _autodoc(func):
             @wraps(func)
             def __autodoc(*_args, **_kwargs):
@@ -127,6 +140,13 @@ class Autodoc(object):
         return _autodoc
 
     def generate(self, *args, **kwargs):
+        """Generate document.
+
+        @autodoc.generate('output_file.rst', template='template.rst')
+
+        :param *args:
+        :param **kwargs:
+        """
         def _generate(func):
             @wraps(func)
             def __generate(*_args):
