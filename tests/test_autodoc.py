@@ -206,6 +206,7 @@ class TestAutodocNotGenerate(TestCase):
             shutil.rmtree(var_path)
             os.mkdir(var_path)
 
+    @staticmethod
     @autodoc.generate(
         os.path.join(var_path, 'test_generate.md'),
         template=os.path.join(root_path, 'templates/markdown.md'))
