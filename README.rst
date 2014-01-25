@@ -12,7 +12,7 @@ This library is Python implementation of Autodoc.
 Links
 -----
 
-- `Repository <https://github.com/heavenshell/py-autodoc`>_
+- `Repository <https://github.com/heavenshell/py-autodoc>`_
 - `Documentation <http://autodoc.readthedocs.org/en/latest/>`_
 
 
