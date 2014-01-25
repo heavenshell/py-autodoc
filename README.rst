@@ -10,6 +10,7 @@ Installation
 ------------
 
 ::
+
   $ virtualenv --distribute autodoc_sample
   $ source autodoc/bin/activate
   $ cd autodoc
