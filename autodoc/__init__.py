@@ -51,6 +51,7 @@ class WebTestResponse(Response):
             'response_content_type': content_type,
             'response_body': response_body,
             'target_url': '{0}://{1}'.format(request.scheme, request.host),
+            'request': '{0} {1}'.format(request.method, request.path_info),
             'params': params
         }
 

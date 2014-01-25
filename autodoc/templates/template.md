@@ -10,7 +10,7 @@ $params
 
 ### Request
 
-$describe
+$request
 
 ### Response
 

@@ -10,7 +10,7 @@ Request
 -------
 ::
 
-  $describe
+  $request
 
 Parameters
 ----------
