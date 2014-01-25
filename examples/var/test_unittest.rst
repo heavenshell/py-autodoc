@@ -1,80 +1,89 @@
-## POST /foo/bar
+POST /foo/bar
+=============
 
-### Target Server
+Target Server
+-------------
 
 http://localhost:80
 
-### Parameters
+Request
+-------
+
+POST /foo/bar
+
+Parameters
+----------
 
 {
   "id": 1, 
   "message": "foo"
 }
 
-### Request
+Response
+--------
 
-POST /foo/bar
-
-### Response
-
-```
 Status:       200
 Content-Type: application/json
 Response:
 {
   "response": "foo_bar"
 }
-```
 
-## GET /
+GET /
+=====
 
-### Target Server
+Target Server
+-------------
 
 http://localhost:80
 
-### Parameters
-
-
-
-### Request
+Request
+-------
 
 GET /
 
-### Response
+Parameters
+----------
 
-```
+
+
+Response
+--------
+
 Status:       200
 Content-Type: application/json
 Response:
 {
   "response": "index"
 }
-```
 
-## POST /
+POST /
+======
 
-### Target Server
+Target Server
+-------------
 
 http://localhost:80
 
-### Parameters
+Request
+-------
+
+POST /
+
+Parameters
+----------
 
 {
   "id": 1, 
   "message": "foo"
 }
 
-### Request
+Response
+--------
 
-POST /
-
-### Response
-
-```
 Status:       200
 Content-Type: application/json
 Response:
 {
   "response": "create"
 }
-```
