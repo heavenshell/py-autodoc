@@ -43,6 +43,7 @@ class TestAutodoc(TestCase):
             'describe_separators': '======',
             'target_url': 'http://localhost:80',
             'status_code': 200,
+            'request': 'POST /',
             'response_body': '{\n  "response": "create"\n}',
             'response_content_type': 'application/json',
             'params': '{\n  "message": "foo"\n}'
@@ -61,6 +62,7 @@ class TestAutodoc(TestCase):
             'response_content_type': 'application/json',
             'response_body': '{\n  "response": "index"\n}',
             'describe': 'GET /',
+            'request': 'GET /',
             'params': '',
             'status_code': 200,
             'target_url': 'http://localhost:80',
@@ -109,6 +111,7 @@ class TestAutodoc(TestCase):
             'response_content_type': 'application/json',
             'response_body': '{\n  "response": "index"\n}',
             'describe': 'GET /',
+            'request': 'GET /',
             'params': '',
             'status_code': 200,
             'target_url': 'http://localhost:80',
@@ -143,6 +146,7 @@ class TestWebTestResponse(TestCase):
             'status_code': 200,
             'response_body': '{\n  "response": "index"\n}',
             'response_content_type': 'application/json',
+            'request': 'GET /',
             'params': '',
             'target_url': 'http://localhost:80'
         }
@@ -156,6 +160,7 @@ class TestWebTestResponse(TestCase):
         var = {
             'target_url': 'http://localhost:80',
             'status_code': 200,
+            'request': 'POST /',
             'response_body': '{\n  "response": "create"\n}',
             'response_content_type': 'application/json',
             'params': '{\n  "message": "foo"\n}'
