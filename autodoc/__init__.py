@@ -100,7 +100,20 @@ class Autodoc(object):
         with open(self.template_path, 'rb') as f:
             data = f.read()
             template = Template(to_unicode(data))
+            indent_targets = ['params', 'response_body']
             for v in self.vars:
+                if self.template_path.endswith('.rst'):
+                    for k in indent_targets:
+                        lines = v[k].split('\n')
+                        ret = []
+                        for i, l in enumerate(lines):
+                            if i > 0:
+                                ret.append('  {0}'.format(l).rstrip())
+                            else:
+                                ret.append(l)
+                        v[k] = '\n'.join(ret)
+
+
                 document = template.substitute(v)
                 documents.append(document)
 

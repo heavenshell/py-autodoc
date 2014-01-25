@@ -31,10 +31,12 @@ http://localhost:80
 
 ### Parameters
 
+```
 {
   "message": "foo", 
   "id": 1
 }
+```
 
 ### Request
 

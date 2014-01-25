@@ -18,9 +18,9 @@ Parameters
 ::
 
   {
-  "id": 1, 
-  "message": "foo"
-}
+    "message": "foo",
+    "id": 1
+  }
 
 Response
 --------
@@ -31,8 +31,8 @@ Response
   Content-Type: application/json
   Response:
   {
-  "response": "foo_bar"
-}
+    "response": "foo_bar"
+  }
 
 GET /
 =====
@@ -64,8 +64,8 @@ Response
   Content-Type: application/json
   Response:
   {
-  "response": "index"
-}
+    "response": "index"
+  }
 
 POST /
 ======
@@ -87,9 +87,9 @@ Parameters
 ::
 
   {
-  "id": 1, 
-  "message": "foo"
-}
+    "message": "foo",
+    "id": 1
+  }
 
 Response
 --------
@@ -100,5 +100,5 @@ Response
   Content-Type: application/json
   Response:
   {
-  "response": "create"
-}
+    "response": "create"
+  }
