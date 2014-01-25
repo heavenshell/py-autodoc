@@ -63,6 +63,7 @@ class Autodoc(object):
         root_path = os.path.dirname(os.path.abspath(__file__))
         self.template_path = os.path.join(root_path, 'templates',
                                           'template.rst')
+        self.separators = '='
 
     def clear(self):
         self.vars = []
@@ -76,7 +77,7 @@ class Autodoc(object):
         document = klass.parse(response)
         document['describe'] = describe
         #: This variable is for Sphinx line separata.
-        document['describe_separator'] = '-' * len(describe)
+        document['describe_separators'] = self.separators * len(describe)
 
         self.vars.append(document)
 

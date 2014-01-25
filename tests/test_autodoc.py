@@ -38,7 +38,7 @@ class TestAutodoc(TestCase):
 
         var = {
             'describe': 'POST /',
-            'describe_separator': '------',
+            'describe_separators': '======',
             'target_url': 'http://localhost:80',
             'status_code': 200,
             'response_body': '{\n  "response": "create"\n}',
@@ -62,7 +62,7 @@ class TestAutodoc(TestCase):
             'params': '',
             'status_code': 200,
             'target_url': 'http://localhost:80',
-            'describe_separator': '-----'
+            'describe_separators': '====='
         }
         vars = [var, var]
         self.assertEqual(autodoc.vars, vars)
@@ -96,6 +96,25 @@ class TestAutodoc(TestCase):
         autodoc.create_document(output)
         ret = os.path.exists(output)
         self.assertTrue(ret)
+        autodoc.clear()
+
+    def test_should_change_separators(self):
+        """ Should change separators. """
+        res = self.client.get('/')
+        autodoc.separators = '*'
+        autodoc.parse('GET /', res)
+        var = {
+            'response_content_type': 'application/json',
+            'response_body': '{\n  "response": "index"\n}',
+            'describe': 'GET /',
+            'params': '',
+            'status_code': 200,
+            'target_url': 'http://localhost:80',
+            'describe_separators': '*****'
+        }
+        for k, v in iteritems(autodoc.vars[0]):
+            self.assertEqual(v, var[k])
+
         autodoc.clear()
 
 
