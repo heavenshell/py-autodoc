@@ -21,7 +21,7 @@ class TestUnittest(TestCase):
         self.client = TestApp(app)
 
     @classmethod
-    @autodoc.generate('var/test_unittest.md', template='templates/markdown.md')
+    @autodoc.generate('var/test_unittest.rst')
     def tearDownClass(cls):
         pass
 
