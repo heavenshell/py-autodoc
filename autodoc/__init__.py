@@ -158,6 +158,8 @@ class Autodoc(object):
                 if self._is_runnable() is False:
                     return func
 
+                func(arg)
+
                 if 'template' in kwargs:
                     template_path = kwargs['template']
                     if not os.path.isabs(template_path):
@@ -170,10 +172,9 @@ class Autodoc(object):
                     path = os.path.abspath(args[0])
 
                 self.create_document(path)
+
                 #: Initialize.
                 self.clear()
-
-                func(arg)
 
                 return func
             return __generate
