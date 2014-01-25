@@ -63,7 +63,7 @@ Example for unittest
           return res
 
 
-`@autodoc.describe()` must describe test name.
+`@autodoc.describe()` describe test name.
 
 For example `GET /` assigned to generated document.
 
@@ -152,4 +152,4 @@ decorate `@autodoc.generate` to `tearDownClass`, `teardown_module` fixture.
 
 Configuration
 -------------
-You can configure `@autodoc.generat(output, template=path_to_template` to change template file.
+You can configure `@autodoc.generat(output, template=path_to_template)` to change template file.
