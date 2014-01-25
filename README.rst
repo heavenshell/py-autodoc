@@ -21,21 +21,25 @@ Usage
 Run unittest with PYAUTODOC=1 to generate documents for your tests decorated with `@autodoc.generate`.
 
 ::
+
   AUTODOC=1 python -m unittest examples/test_unittest.py
 
 If you use py.test as test runner.
 
 ::
+
   AUTODOC=1 py.test tests examples/test_pytest.py
 
 If you use nose as test runner.
 
 ::
+
   AUTODOC=1 nosetests tests examples/test_unittest.py
 
 Example for unittest
 --------------------
 ::
+
   class TestUnittest(TestCase):
       def setUp(self):
           app = create_app
@@ -65,6 +69,7 @@ For example `GET /` assigned to generated document.
 Example for py.test
 -------------------
 ::
+
   @pytest.fixture
   def setup():
       setup = TestApp(create_app)
@@ -93,6 +98,7 @@ Return WebTest response in test method
 Py-Autodoc must return WebTest response.
 
 ::
+
   @autodoc.describe('POST /')
   def test_post(setup):
       res = setup.post_json('/', params={'id': 1, 'message': 'foo'})
@@ -110,6 +116,7 @@ Generate document point
 If you set `@autodoc.generate` to each test case, document will generate each file.
 
 ::
+
   class TestUnittest(TestCase):
       def setUp(self):
           app = create_app
