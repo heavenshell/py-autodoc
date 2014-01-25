@@ -8,13 +8,16 @@ http://localhost:80
 
 Request
 -------
+::
 
-POST /foo/bar
+  POST /foo/bar
 
 Parameters
 ----------
 
-{
+::
+
+  {
   "id": 1, 
   "message": "foo"
 }
@@ -22,10 +25,12 @@ Parameters
 Response
 --------
 
-Status:       200
-Content-Type: application/json
-Response:
-{
+::
+
+  Status:       200
+  Content-Type: application/json
+  Response:
+  {
   "response": "foo_bar"
 }
 
@@ -39,21 +44,26 @@ http://localhost:80
 
 Request
 -------
+::
 
-GET /
+  GET /
 
 Parameters
 ----------
 
+::
 
+  
 
 Response
 --------
 
-Status:       200
-Content-Type: application/json
-Response:
-{
+::
+
+  Status:       200
+  Content-Type: application/json
+  Response:
+  {
   "response": "index"
 }
 
@@ -67,13 +77,16 @@ http://localhost:80
 
 Request
 -------
+::
 
-POST /
+  POST /
 
 Parameters
 ----------
 
-{
+::
+
+  {
   "id": 1, 
   "message": "foo"
 }
@@ -81,9 +94,11 @@ Parameters
 Response
 --------
 
-Status:       200
-Content-Type: application/json
-Response:
-{
+::
+
+  Status:       200
+  Content-Type: application/json
+  Response:
+  {
   "response": "create"
 }
