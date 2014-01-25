@@ -22,6 +22,7 @@ var_path = os.path.join(root_path, 'var')
 
 os.environ['PYAUTODOC'] = '1'
 
+
 class TestAutodoc(TestCase):
     def setUp(self):
         app = create_app
@@ -194,6 +195,7 @@ class TestAutodocGenerate(TestCase):
         self.assertEqual(res.status_code, 200)
 
         return res
+
 
 class TestAutodocNotGenerate(TestCase):
     def setUp(self):
