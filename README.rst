@@ -2,6 +2,8 @@ Autodoc
 =======
 Generate documentation from your unit-test.
 
+.. image:: https://travis-ci.org/heavenshell/py-autodoc.png?branch=master
+
 This library is Python implementation of Autodoc.
 
 - `Autodoc <https://github.com/r7kamura/autodoc>`_
