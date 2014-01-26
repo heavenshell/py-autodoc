@@ -16,7 +16,7 @@
 import os
 from setuptools import setup, find_packages
 
-requires = ['webtest']
+requires = ['webtest', 'decorator']
 try:
     import argparse
 except:

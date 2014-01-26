@@ -16,6 +16,7 @@ import os
 import json
 from string import Template
 from functools import wraps
+from decorator import decorator
 from autodoc._compat import to_unicode
 
 
@@ -134,24 +135,22 @@ class Autodoc(object):
         :param *args:
         :param **kwargs:
         """
-        def _autodoc(func):
-            @wraps(func)
-            def __autodoc(*_args, **_kwargs):
-                if len(_args) > 0:
-                    #: Instance or class method.
-                    response = func(_args[0])
+        def _autodoc(func, *_args, **_kwargs):
+            if len(_args) > 0:
+                #: Instance or class method.
+                response = func(_args[0])
+            else:
+                #: Function.
+                if len(_kwargs) > 0:
+                    response = func(**_kwargs)
                 else:
-                    #: Function.
-                    if len(_kwargs) > 0:
-                        response = func(**_kwargs)
-                    else:
-                        response = func()
+                    response = func()
 
-                self.parse(args[0], response)
+            self.parse(args[0], response)
 
-                return func
-            return __autodoc
-        return _autodoc
+            return func
+
+        return decorator(_autodoc)
 
     def generate(self, *args, **kwargs):
         """Generate document.
@@ -161,6 +160,7 @@ class Autodoc(object):
         :param *args:
         :param **kwargs:
         """
+        #: TODO Use decorator instead.
         def _generate(func):
             @wraps(func)
             def __generate(*_args):
