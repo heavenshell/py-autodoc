@@ -33,19 +33,19 @@ Run unittest with PYAUTODOC=1 to generate documents for your tests decorated wit
 
 ::
 
-  AUTODOC=1 python -m unittest examples/test_unittest.py
+  PYAUTODOC=1 python -m unittest examples/test_unittest.py
 
 If you use py.test as test runner.
 
 ::
 
-  AUTODOC=1 py.test tests examples/test_pytest.py
+  PYAUTODOC=1 py.test tests examples/test_pytest.py
 
 If you use nose as test runner.
 
 ::
 
-  AUTODOC=1 nosetests tests examples/test_unittest.py
+  PYAUTODOC=1 nosetests tests examples/test_unittest.py
 
 Example for unittest
 --------------------
