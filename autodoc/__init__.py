@@ -114,7 +114,6 @@ class Autodoc(object):
                                 ret.append(l)
                         v[k] = '\n'.join(ret)
 
-
                 document = template.substitute(v)
                 documents.append(document)
 
