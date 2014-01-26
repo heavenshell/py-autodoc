@@ -36,8 +36,6 @@ class TestAutodocNotGenerate(TestCase):
         template=os.path.join(root_path, 'templates/markdown.md'))
     def tearDownClass(cls):
         pass
-        ret = os.path.exists(os.path.join(var_path, 'test_generate.md'))
-        assert ret is False
 
     @autodoc.describe('GET /')
     def test_should_not_generate(self):
