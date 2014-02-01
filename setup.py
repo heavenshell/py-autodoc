@@ -17,10 +17,6 @@ import os
 from setuptools import setup, find_packages
 
 requires = ['webtest', 'decorator']
-try:
-    import argparse
-except:
-    requires.append('argparse')
 
 app_name = 'autodoc'
 
