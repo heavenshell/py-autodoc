@@ -15,6 +15,7 @@
 import os
 import json
 from string import Template
+from urllib.parse import parse_qsl
 from functools import wraps
 from decorator import decorator
 from autodoc._compat import to_unicode
@@ -59,6 +60,45 @@ class WebTestResponse(Response):
         return ret
 
 
+class RequestsResponse(Response):
+    def parse(self, response):
+        """Parse requests response.
+
+        :param response: requests response object
+        """
+        content_type = response.headers['Content-Type']
+        status = response.status_code
+        params = {}
+
+        response_body = ''
+        if to_unicode(response.content) != '':
+            response_body = to_unicode(response.content)
+
+        request = response.request
+        if request.body != '':
+            data = parse_qsl(request.body)
+            for v in data:
+                #: v[0] = parameter key
+                #: v[1] = parameter value
+                #: ex:
+                #:   user_id=foo&email=foo%40example.com
+                #: v[0] = user_id
+                #: v[1] = foo
+                params[v[0]] = v[1]
+            params = json.dumps(params, indent=2)
+
+        ret = {
+            'status_code': status,
+            'response_content_type': content_type,
+            'response_body': response_body,
+            'target_url': request.url,
+            'request': '{0} {1}'.format(request.method, request.path_url),
+            'params': params
+        }
+
+        return ret
+
+
 class Autodoc(object):
     def __init__(self):
         self.clear()
@@ -79,6 +119,8 @@ class Autodoc(object):
         """
         if response.__module__ == 'webtest.response':
             klass = WebTestResponse()
+        if response.__module__ == 'requests.models':
+            klass = RequestsResponse()
         else:
             return
 
