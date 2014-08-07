@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    Add comment here
-    ~~~~~~~~~~~~~~~~
+    autodoc.tests.test_requests
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Add descripton here
+    Tests for `requests` client.
 
 
     :copyright: (c) 2014 Shinya Ohyanagi, All rights reserved.
@@ -11,9 +11,8 @@
 """
 import os
 import shutil
-import requests
 from urllib.parse import urlencode
-from requests import Request, Session
+from requests import Request, Session, Response
 from unittest import TestCase
 from mock import patch
 from autodoc import autodoc
@@ -26,7 +25,7 @@ os.environ['PYAUTODOC'] = '1'
 
 
 def dummy_response(m, request, params, filename=None):
-    response = requests.Response()
+    response = Response()
     response.status_code = 200
     response.headers['Content-Type'] = 'application/json'
     response.request = request
@@ -50,26 +49,31 @@ class TestRequestsResponse(TestCase):
 
         return request
 
+    @patch('requests.sessions.Session.send')
+    def send(self, request, params, file_path, m):
+        dummy_response(m, request, params, file_path)
+
+        session = Session()
+        res = session.send(request.prepare())
+
+        return res
+
     def setUp(self):
-        self.client = requests
         self.root_path = root_path
         if os.path.exists(var_path):
             shutil.rmtree(var_path)
             os.mkdir(var_path)
 
-    @patch('requests.sessions.Session.send')
-    def test_parse_response(self, m):
+    def test_parse_response(self):
         """ Should parse requests response. """
         params = {'message': 'foo'}
         headers = {'content-type': 'application/json'}
-        req = self.create_request('http://localhost:5000/', 'POST', data=params,
+        req = self.create_request(url='http://localhost:5000/',
+                                  method='POST',
+                                  data=params,
                                   headers=headers)
-        dummy_response(m, req, params, 'data/post.json')
 
-
-        session = Session()
-        res = session.send(req.prepare())
-
+        res = self.send(req, params, 'data/post.json')
         autodoc.parse('POST /', res)
 
         var = {
