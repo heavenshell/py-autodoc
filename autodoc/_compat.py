@@ -18,12 +18,16 @@ PY2 = sys.version_info[0] == 2
 
 
 if PY2:
+    from urlparse import parse_qsl as parse_qsl
+    from urllib import urlencode as urlencode
     text_type = unicode
 
     iterkeys = lambda d: d.iterkeys()
     itervalues = lambda d: d.itervalues()
     iteritems = lambda d: d.iteritems()
 else:
+    from urllib.parse import parse_qsl as parse_qsl
+    from urllib.parse import urlencode as urlencode
     text_type = str
 
     iterkeys = lambda d: iter(d.keys())
