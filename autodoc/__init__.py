@@ -71,7 +71,14 @@ class RequestsResponse(Response):
 
         response_body = ''
         if to_unicode(response.content) != '':
-            response_body = to_unicode(response.content)
+            response_body = json.loads(to_unicode(response.content))
+            #: Format indent.
+            #: {'foo': 'bar'}
+            #:   will format to
+            #: {
+            #:   'foo': 'bar'
+            #: }
+            response_body = json.dumps(response_body, indent=2)
 
         request = response.request
         if request.body != '':
