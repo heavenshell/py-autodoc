@@ -48,6 +48,6 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Software Development :: Testing'
     ],
-    tests_require=['webtest'],
+    tests_require=['webtest', 'requests', 'mock'],
     test_suite='tests'
 )
