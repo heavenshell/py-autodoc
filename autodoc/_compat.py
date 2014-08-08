@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-    gene.compat
-    ~~~~~~~~~~~
+    autodoc.compat
+    ~~~~~~~~~~~~~~
 
     Compatible to Python2.6,2.7 and Python3.3
 
