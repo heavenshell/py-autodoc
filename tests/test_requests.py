@@ -11,12 +11,11 @@
 """
 import os
 import shutil
-from urllib.parse import urlencode
 from requests import Request, Session, Response
 from unittest import TestCase
 from mock import patch
-from autodoc import autodoc
-from autodoc._compat import iteritems
+from autodoc import Autodoc
+from autodoc._compat import iteritems, urlencode
 
 root_path = os.path.dirname(os.path.abspath(__file__))
 var_path = os.path.join(root_path, 'var')
