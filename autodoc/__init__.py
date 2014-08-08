@@ -81,7 +81,9 @@ class RequestsResponse(Response):
             response_body = json.dumps(response_body, indent=2)
 
         request = response.request
-        if request.body != '':
+        if request.body == '':
+            params = ''
+        else:
             data = parse_qsl(request.body)
             for v in data:
                 #: v[0] = parameter key
