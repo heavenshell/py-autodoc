@@ -62,6 +62,7 @@ class TestRequestsResponse(TestCase):
         if os.path.exists(var_path):
             shutil.rmtree(var_path)
             os.mkdir(var_path)
+        self.autodoc = Autodoc()
 
     def test_parse_response(self):
         """ Should parse requests response. """
@@ -73,7 +74,7 @@ class TestRequestsResponse(TestCase):
                                   headers=headers)
 
         res = self.send(req, params, 'data/post.json')
-        autodoc.parse('POST /', res)
+        self.autodoc.parse('POST /', res)
 
         var = {
             'describe': 'POST /',
@@ -81,14 +82,14 @@ class TestRequestsResponse(TestCase):
             'target_url': 'http://localhost:5000/',
             'status_code': 200,
             'request': 'POST /',
-            'response_body': '{"response": "create"}\n',
+            'response_body': '{\n  "response": "create"\n}',
             'response_content_type': 'application/json',
             'params': '{\n  "message": "foo"\n}'
         }
-        for k, v in iteritems(autodoc.vars[0]):
+        for k, v in iteritems(self.autodoc.vars[0]):
             self.assertEqual(v, var[k])
 
-        autodoc.clear()
+        self.autodoc.clear()
 
     def test_parse_responses(self):
         """ Should stack responses. """
@@ -98,21 +99,21 @@ class TestRequestsResponse(TestCase):
                                   headers=headers)
 
         res = self.send(req, '', 'data/get.json')
-        autodoc.parse('GET /', res)
-        autodoc.parse('GET /', res)
+        self.autodoc.parse('GET /', res)
+        self.autodoc.parse('GET /', res)
         var = {
             'response_content_type': 'application/json',
-            'response_body': '{"response": "index"}\n',
+            'response_body': '{\n  "response": "index"\n}',
             'describe': 'GET /',
             'request': 'GET /',
-            'params': {},
+            'params': '',
             'status_code': 200,
             'target_url': 'http://localhost:5000/',
             'describe_separators': '====='
         }
         vars = [var, var]
-        self.assertEqual(autodoc.vars, vars)
-        autodoc.clear()
+        self.assertEqual(self.autodoc.vars, vars)
+        self.autodoc.clear()
 
     def test_clear_responses(self):
         """ Should clear stacked WebTest responses. """
@@ -123,7 +124,65 @@ class TestRequestsResponse(TestCase):
 
         res = self.send(req, '', 'data/get.json')
 
-        autodoc.parse('GET /', res)
-        autodoc.parse('GET /', res)
-        autodoc.clear()
-        self.assertEqual(autodoc.vars, [])
+        self.autodoc.parse('GET /', res)
+        self.autodoc.parse('GET /', res)
+        self.autodoc.clear()
+        self.assertEqual(self.autodoc.vars, [])
+
+    def test_create_document(self):
+        """ Should create reST document. """
+        headers = {'content-type': 'application/json'}
+        req = self.create_request(url='http://localhost:5000/',
+                                  method='GET',
+                                  headers=headers)
+
+        res = self.send(req, '', 'data/get.json')
+
+        self.autodoc.parse('GET /', res)
+        self.autodoc.create_document(os.path.join(self.root_path,
+                                                  'var/test_autodoc.rst'))
+        self.assertTrue(os.path.exists(os.path.join(self.root_path,
+                                                    'var/test_autodoc.rst')))
+        self.autodoc.clear()
+
+    def test_create_markdown_document(self):
+        """ Should create markdown document. """
+        headers = {'content-type': 'application/json'}
+        req = self.create_request(url='http://localhost:5000/',
+                                  method='GET',
+                                  headers=headers)
+        res = self.send(req, '', 'data/get.json')
+
+        self.autodoc.parse('GET /', res)
+        self.autodoc.template_path = os.path.join(self.root_path,
+                                                  'templates/markdown.md')
+        output = os.path.join(self.root_path, 'var/test_autodoc.md')
+        self.autodoc.create_document(output)
+        ret = os.path.exists(output)
+        self.assertTrue(ret)
+        self.autodoc.clear()
+
+    def test_should_change_separators(self):
+        """ Should change separators. """
+        headers = {'content-type': 'application/json'}
+        req = self.create_request(url='http://localhost:5000/',
+                                  method='GET',
+                                  headers=headers)
+        res = self.send(req, '', 'data/get.json')
+
+        self.autodoc.separators = '*'
+        self.autodoc.parse('GET /', res)
+        var = {
+            'response_content_type': 'application/json',
+            'response_body': '{\n  "response": "index"\n}',
+            'describe': 'GET /',
+            'request': 'GET /',
+            'params': '',
+            'status_code': 200,
+            'target_url': 'http://localhost:5000/',
+            'describe_separators': '*****'
+        }
+        for k, v in iteritems(self.autodoc.vars[0]):
+            self.assertEqual(v, var[k])
+
+        self.autodoc.clear()
