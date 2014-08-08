@@ -67,7 +67,7 @@ class RequestsResponse(Response):
         """
         content_type = response.headers['Content-Type']
         status = response.status_code
-        params = {}
+        params = ''
 
         response_body = ''
         if to_unicode(response.content) != '':
@@ -81,10 +81,9 @@ class RequestsResponse(Response):
             response_body = json.dumps(response_body, indent=2)
 
         request = response.request
-        if request.body == '':
-            params = ''
-        else:
+        if request.body != '':
             data = parse_qsl(request.body)
+            request_params = {}
             for v in data:
                 #: v[0] = parameter key
                 #: v[1] = parameter value
@@ -92,8 +91,8 @@ class RequestsResponse(Response):
                 #:   user_id=foo&email=foo%40example.com
                 #: v[0] = user_id
                 #: v[1] = foo
-                params[v[0]] = v[1]
-            params = json.dumps(params, indent=2)
+                request_params[v[0]] = v[1]
+            params = json.dumps(request_params, indent=2)
 
         ret = {
             'status_code': status,
@@ -127,7 +126,7 @@ class Autodoc(object):
         """
         if response.__module__ == 'webtest.response':
             klass = WebTestResponse()
-        if response.__module__ == 'requests.models':
+        elif response.__module__ == 'requests.models':
             klass = RequestsResponse()
         else:
             return
