@@ -15,10 +15,9 @@
 import os
 import json
 from string import Template
-from urllib.parse import parse_qsl
 from functools import wraps
 from decorator import decorator
-from autodoc._compat import to_unicode
+from autodoc._compat import to_unicode, parse_qsl
 
 
 class Response(object):
