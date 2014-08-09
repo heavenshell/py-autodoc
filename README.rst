@@ -100,11 +100,39 @@ Example for py.test
 
       return res
 
+
+Example for requests
+--------------------
+::
+
+  import requests
+
+  class TestUnittest(TestCase):
+    def setUp(self):
+      self.client = requests
+
+    @classmethod
+    @autodoc.generate('var/test_unittest.rst')
+    def tearDownClass(cls):
+      pass
+
+    @autodoc.describe('POST /')
+    def test_get(self):
+      """ GET / """
+      params = {'id': 1, 'message': 'foo'}
+      headers = {'content-type': 'application/json'}
+      res = self.client.post('http://example.com/',
+                             data=params, headers=headers)
+      self.assertEqual(res.status_code, 200)
+
+      return res
+
+
 Conventions
 -----------
 
-Return WebTest response in test method
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Return WebTest or requests response in test method
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Py-Autodoc must return WebTest response.
 
@@ -115,7 +143,7 @@ Py-Autodoc must return WebTest response.
       res = setup.post_json('/', params={'id': 1, 'message': 'foo'})
       assert res.status_code == 200
 
-      return res # Must return WebTest response.
+      return res # Must return WebTest or requests response.
 
 
 
