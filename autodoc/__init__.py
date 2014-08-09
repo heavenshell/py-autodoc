@@ -19,6 +19,8 @@ from functools import wraps
 from decorator import decorator
 from autodoc._compat import to_unicode, parse_qsl
 
+__version__ = '0.3'
+
 
 class Response(object):
     def parse(self, response):
