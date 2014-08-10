@@ -117,8 +117,8 @@ Example for requests
       pass
 
     @autodoc.describe('POST /')
-    def test_get(self):
-      """ GET / """
+    def test_post(self):
+      """ POST / """
       params = {'id': 1, 'message': 'foo'}
       headers = {'content-type': 'application/json'}
       res = self.client.post('http://example.com/',
