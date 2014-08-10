@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    Add comment here
-    ~~~~~~~~~~~~~~~~
+    autodoc.tests.test_not_generate
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Add descripton here
+    Tests for documentation not generated.
 
 
     :copyright: (c) 2014 Shinya Ohyanagi, All rights reserved.

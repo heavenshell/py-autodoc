@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    Add comment here
-    ~~~~~~~~~~~~~~~~
+    autodoc.tests.test_autodoc
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Add descripton here
+    Tests for Autodoc.
 
 
     :copyright: (c) 2014 Shinya Ohyanagi, All rights reserved.
