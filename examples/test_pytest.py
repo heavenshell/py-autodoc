@@ -6,7 +6,7 @@
     Autodoc for PyTest.
 
 
-    :copyright: (c) 2014 Shinya Ohyanagi, All rights reserved.
+    :copyright: (c) 2014-2015 Shinya Ohyanagi, All rights reserved.
     :license: BSD, see LICENSE for more details.
 """
 import sys

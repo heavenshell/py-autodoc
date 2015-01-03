@@ -10,7 +10,7 @@
     `Perl autodoc <https://metacpan.org/pod/Test::JsonAPI::Autodoc>`_
 
 
-    :copyright: (c) 2014 Shinya Ohyanagi, All rights reserved.
+    :copyright: (c) 2014-2015 Shinya Ohyanagi, All rights reserved.
     :license: BSD, see LICENSE for more details.
 """
 import os

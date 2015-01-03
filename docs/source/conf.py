@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Autodoc'
-copyright = u'2014, Shinya Ohyanagi'
+copyright = u'2014-2015, Shinya Ohyanagi'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
