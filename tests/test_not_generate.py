@@ -29,6 +29,8 @@ class TestAutodocNotGenerate(TestCase):
         if os.path.exists(var_path):
             shutil.rmtree(var_path)
             os.mkdir(var_path)
+            with open('{0}/.gitkeep'.format(var_path), 'w') as f:
+                f.write('')
 
     @staticmethod
     @autodoc.generate(

@@ -22,6 +22,13 @@ var_path = os.path.join(root_path, 'var')
 
 os.environ['PYAUTODOC'] = '1'
 
+def clear_generated_file(var_path):
+    if os.path.exists(var_path):
+        shutil.rmtree(var_path)
+        os.mkdir(var_path)
+        with open('{0}/.gitkeep'.format(var_path), 'w') as f:
+            f.write('')
+
 
 class TestAutodoc(TestCase):
     def setUp(self):
@@ -29,9 +36,7 @@ class TestAutodoc(TestCase):
         self.client = TestApp(app)
 
         self.root_path = root_path
-        if os.path.exists(var_path):
-            shutil.rmtree(var_path)
-            os.mkdir(var_path)
+        clear_generated_file(var_path)
 
     def test_parse_response(self):
         """ Should parse WebTest response. """
@@ -133,9 +138,7 @@ class TestWebTestResponse(TestCase):
         app = create_app
         self.client = TestApp(app)
 
-        if os.path.exists(var_path):
-            shutil.rmtree(var_path)
-            os.mkdir(var_path)
+        clear_generated_file(var_path)
 
     def test_should_parse_get_request_result(self):
         """ Should parse WebTest GET response. """
