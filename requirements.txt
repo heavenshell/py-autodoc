@@ -1,4 +1,4 @@
-webtest
+webtest==2.0.29
 decorator
 requests
 mock
