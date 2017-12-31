@@ -1,4 +1,4 @@
 webtest==2.0.29
 decorator==4.1.2
-requests
+requests==2.18.4
 mock
