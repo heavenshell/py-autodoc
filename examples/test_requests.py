@@ -16,6 +16,7 @@ from requests import Request, Session, Response
 from autodoc import autodoc
 from autodoc._compat import urlencode
 
+
 def dummy_response(m, request, params, filename=None):
     response = Response()
     response.status_code = 200
