@@ -20,7 +20,7 @@ PY2 = sys.version_info[0] == 2
 if PY2:
     from urlparse import parse_qsl as parse_qsl  # noqa F401
     from urllib import urlencode as urlencode  # noqa F401
-    text_type = unicode
+    text_type = unicode  # noqa F821
 
     iterkeys = lambda d: d.iterkeys()  # noqa E731
     itervalues = lambda d: d.itervalues()  # noqa E731
