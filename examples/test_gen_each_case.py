@@ -46,7 +46,10 @@ class TestUnittest(TestCase):
     @autodoc.describe('POST /foo/bar')
     def test_foo_bar(self):
         """ POST /foo/bar """
-        res = self.client.post_json('/foo/bar', params={'id': 1, 'message': 'foo'})
+        res = self.client.post_json('/foo/bar', params={
+            'id': 1,
+            'message': 'foo'
+        })
         self.assertEqual(res.status_code, 200)
 
         return res

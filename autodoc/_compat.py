@@ -3,7 +3,7 @@
     autodoc.compat
     ~~~~~~~~~~~~~~
 
-    Compatible to Python2.6,2.7 and Python3.3
+    Compatible to Python2.6,2.7 and Python3.x
 
     This module is copyed from Werkzeug's `_compat.py`.
 
@@ -18,21 +18,21 @@ PY2 = sys.version_info[0] == 2
 
 
 if PY2:
-    from urlparse import parse_qsl as parse_qsl
-    from urllib import urlencode as urlencode
-    text_type = unicode
+    from urlparse import parse_qsl as parse_qsl  # noqa F401
+    from urllib import urlencode as urlencode  # noqa F401
+    text_type = unicode  # noqa F821
 
-    iterkeys = lambda d: d.iterkeys()
-    itervalues = lambda d: d.itervalues()
-    iteritems = lambda d: d.iteritems()
+    iterkeys = lambda d: d.iterkeys()  # noqa E731
+    itervalues = lambda d: d.itervalues()  # noqa E731
+    iteritems = lambda d: d.iteritems()  # noqa E731
 else:
-    from urllib.parse import parse_qsl as parse_qsl
-    from urllib.parse import urlencode as urlencode
+    from urllib.parse import parse_qsl as parse_qsl  # noqa F401
+    from urllib.parse import urlencode as urlencode  # noqa F401
     text_type = str
 
-    iterkeys = lambda d: iter(d.keys())
-    itervalues = lambda d: iter(d.values())
-    iteritems = lambda d: iter(d.items())
+    iterkeys = lambda d: iter(d.keys())  # noqa E731
+    itervalues = lambda d: iter(d.values())  # noqa E731
+    iteritems = lambda d: iter(d.items())  # noqa E731
 
 
 def to_unicode(x, charset=sys.getdefaultencoding(), errors='strict',

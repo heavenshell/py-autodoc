@@ -22,6 +22,7 @@ var_path = os.path.join(root_path, 'var')
 
 os.environ['PYAUTODOC'] = '1'
 
+
 def clear_generated_file(var_path):
     if os.path.exists(var_path):
         shutil.rmtree(var_path)
