@@ -1,6 +1,17 @@
-include LICENSE README.rst
-recursive-include docs *
-recursive-exclude docs *.pyc
-recursive-exclude docs *.pyo
-recursive-exclude tests *.pyc
-recursive-exclude tests *.pyo
+include LICENSE
+include README.rst
+include setup.cfg
+include setup.py
+
+exclude .travis.yml
+exclude requirements.txt
+exclude tox.ini
+
+global-exclude __pycache__
+global-exclude *.py[co]
+global-exclude *.cfg
+
+prune .github
+prune docs/_build
+prune tests
+prune examples
