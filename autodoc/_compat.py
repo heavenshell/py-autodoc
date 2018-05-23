@@ -3,13 +3,13 @@
     autodoc.compat
     ~~~~~~~~~~~~~~
 
-    Compatible to Python2.6,2.7 and Python3.x
+    Compatible to Python2.7 and Python3.x
 
     This module is copyed from Werkzeug's `_compat.py`.
 
     https://github.com/mitsuhiko/werkzeug/blob/master/werkzeug/_compat.py
 
-    :copyright: (c) 2014-2015 Shinya Ohyanagi, All rights reserved.
+    :copyright: (c) 2014-2018 Shinya Ohyanagi, All rights reserved.
     :license: BSD, see LICENSE for more details.
 """
 import sys
