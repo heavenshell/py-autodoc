@@ -28,7 +28,7 @@ with open(rst_path) as f:
 
 setup(
     name=app_name,
-    version='0.4',
+    version='0.5.0',
     author='Shinya Ohyanagi',
     author_email='sohyanagi@gmail.com',
     url='http://github.com/heavenshell/py-autodoc',
