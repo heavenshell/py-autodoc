@@ -14,7 +14,8 @@
     :license: BSD, see LICENSE for more details.
 """
 import os
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 requires = ['webtest', 'decorator']
 
@@ -35,7 +36,7 @@ setup(
     long_description=description,
     license='BSD',
     platforms='any',
-    packages=find_packages(exclude=['tests', 'examples']),
+    packages=find_packages(exclude=['tests', 'examples', 'docs']),
     package_dir={'': '.'},
     install_requires=requires,
     classifiers=[
@@ -46,8 +47,8 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
-        'Topic :: Software Development :: Testing'
+        'Topic :: Software Development :: Testing',
     ],
     tests_require=['webtest', 'requests', 'mock'],
-    test_suite='tests'
+    test_suite='tests',
 )
