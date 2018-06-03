@@ -5,7 +5,7 @@ python:
   - 3.6
 
 before_script:
-  - 'flake8 --jobs=8 --verbose
+  - flake8 --jobs=8 --verbose
 
 script:
   - python setup.py test
