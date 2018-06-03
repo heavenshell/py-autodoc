@@ -2,6 +2,7 @@ docs/_build
 *.pyc
 *.pyo
 *.egg-info
+*.eggs
 bin
 build
 develop-eggs
