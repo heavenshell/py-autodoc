@@ -1,5 +1,6 @@
 graft autodoc
 graft docs
+graft tests
 
 include LICENSE
 include README.rst
@@ -17,5 +18,3 @@ global-exclude *.cfg
 
 prune .github
 prune docs/_build
-prune tests
-prune examples
