@@ -1,5 +1,5 @@
 webtest==2.0.33
-decorator==4.3.2
+decorator==4.4.0
 requests==2.21.0
 mock==2.0.0
 flake8==3.7.6
