@@ -2,4 +2,4 @@ webtest==2.0.35
 decorator==4.4.2
 requests==2.23.0
 mock==3.0.5
-flake8==3.7.9
+flake8==3.8.1
